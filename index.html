@@ -1,103 +1,126 @@
 <!doctype html>
 <!--
   ============================================================
-  BRAND NAME: currently "NEXUS AI" as a placeholder.
-  To rename: find-and-replace "NEXUS AI" (and "NEXUS" in the
-  logo mark) across index.html — it appears nowhere else.
+  BRAND NAME: "NEXUS AI" is a placeholder. To rename, find and
+  replace "NEXUS AI" (and "NEXUS" in the wordmark).
 
-  BEFORE GOING LIVE, replace these placeholders:
+  BEFORE GOING LIVE, replace:
     __YOUR_WHATSAPP__   e.g. 447700900123  (digits only, no +)
     __YOUR_EMAIL__      e.g. hello@yourdomain.com
-  They are marked with data-placeholder in the markup.
+  Both are marked with data-placeholder in the markup, and the
+  page logs a console warning while they're unset.
+
+  Then DELETE the robots noindex tag below.
   ============================================================
 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NEXUS AI — AI systems that run the repetitive work</title>
-<!-- REMOVE THIS once the WhatsApp/email placeholders are filled in and
-     you're ready to be found. Until then it keeps a half-finished site
-     with dead CTAs out of Google. -->
+
+<!-- REMOVE once the CTAs are real and you want to be found -->
 <meta name="robots" content="noindex,nofollow">
-<meta name="description" content="We design and build AI agents and automations that handle enquiries, qualify leads and run back-office workflows — so your team stops doing the same task twice.">
+
+<title>NEXUS AI — AI systems that handle the repetitive work</title>
+<meta name="description" content="We build AI agents and automations that answer enquiries, book appointments and move data between your tools — so your team stops doing the same task twice.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Sora:wght@600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Manrope:wght@400;500;600;700;800&display=swap">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<!-- fixed 3D stage: lives behind the whole page, driven by scroll -->
-<canvas id="scene" aria-hidden="true"></canvas>
-<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+<a class="skip" href="#main">Skip to content</a>
 
-<!-- ============ NAV ============ -->
+<!-- ================= NAV ================= -->
 <header class="nav" id="nav">
-  <div class="container nav-inner">
-    <a class="logo" href="#top">
+  <div class="wrap nav-inner">
+    <a class="logo" href="#top" aria-label="NEXUS AI home">
       <span class="logo-mark" aria-hidden="true"></span>
-      <span class="logo-text">NEXUS <span>AI</span></span>
+      <span class="logo-text">NEXUS<span>AI</span></span>
     </a>
-    <nav class="nav-links" aria-label="Primary">
+
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
       <a href="#services">What we build</a>
       <a href="#process">How it works</a>
       <a href="#why">Why us</a>
       <a href="#faq">FAQ</a>
+      <a class="btn btn-sm btn-primary" href="#contact">Talk to us</a>
     </nav>
-    <div class="nav-cta">
-      <a class="btn btn-ghost" href="#contact">Talk to us</a>
-    </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
-      <span></span><span></span>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
-<!-- ============ HERO ============ -->
+<main id="main">
+
+<!-- ================= HERO ================= -->
 <section class="hero" id="top">
-  <div class="hero-fade" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow reveal">AI agents &amp; automation studio</p>
+      <h1 class="reveal" style="--d:.05s">
+        Stop paying people to answer the same question all day
+      </h1>
+      <p class="lede reveal" style="--d:.1s">
+        We build AI systems that handle your repetitive enquiries, book
+        appointments straight into your calendar, and move information between
+        the tools you already use — quietly, around the clock.
+      </p>
 
-  <div class="container hero-inner">
-    <p class="eyebrow reveal">AI agents &amp; automation studio</p>
-    <h1 class="reveal" style="--d:.06s">
-      Your business runs on<br><span class="grad">repetitive work.</span><br>Let systems do it.
-    </h1>
-    <p class="lede reveal" style="--d:.12s">
-      We design and build AI agents that answer enquiries, book appointments,
-      chase leads and move data between your tools — running quietly in the
-      background, every hour of every day.
-    </p>
-    <div class="hero-actions reveal" style="--d:.18s">
-      <a class="btn btn-primary" href="#contact">Book a build call</a>
-      <a class="btn btn-ghost" href="#services">See what we build</a>
+      <div class="hero-actions reveal" style="--d:.15s">
+        <a class="btn btn-primary btn-lg" href="#contact">Book a call</a>
+        <a class="btn btn-ghost btn-lg" href="#services">See what we build</a>
+      </div>
+
+      <ul class="hero-points reveal" style="--d:.2s">
+        <li>Built around your workflow, not a template</li>
+        <li>Live in weeks, not quarters</li>
+        <li>You own the system outright</li>
+      </ul>
     </div>
 
-    <ul class="hero-points reveal" style="--d:.24s">
-      <li><span class="tick" aria-hidden="true"></span>Built around your workflow, not a template</li>
-      <li><span class="tick" aria-hidden="true"></span>Live in weeks, not quarters</li>
-      <li><span class="tick" aria-hidden="true"></span>You own the system outright</li>
-    </ul>
-  </div>
+    <!-- A real example of the thing being sold, rather than an abstract graphic -->
+    <div class="hero-demo reveal" style="--d:.12s">
+      <div class="chat" role="img"
+           aria-label="Example conversation: a customer asks about teeth whitening and price; the assistant answers and books an appointment for Thursday 2pm.">
+        <div class="chat-head">
+          <span class="chat-avatar" aria-hidden="true">S</span>
+          <div class="chat-who">
+            <strong>Smile Studio</strong>
+            <span class="chat-status">Answers instantly · 24/7</span>
+          </div>
+        </div>
 
-  <div class="scroll-hint" aria-hidden="true"><span></span></div>
-</section>
+        <div class="chat-body">
+          <div class="msg in">hi do you do teeth whitening? how much is it</div>
+          <div class="msg out">
+            Yes — whitening is £249 and takes about an hour.
+            I've got <strong>Thursday 2:00pm</strong> or <strong>Friday 10:30am</strong> free this week.
+          </div>
+          <div class="msg in">thursday works</div>
+          <div class="msg out">
+            Booked you in for <strong>Thursday 14th, 2:00pm</strong> with Dr Amara.
+            You'll get a reminder the day before. Anything else?
+          </div>
+          <div class="msg in">no thats great thanks</div>
+        </div>
 
-<!-- ============ STAGE BAND 1 ============ -->
-<section class="stage" aria-label="Scattered work">
-  <div class="container">
-    <div class="stage-cap">
-      <p class="eyebrow">The problem</p>
-      <h2>The same tasks,<br>scattered across your week</h2>
-      <p class="stage-sub">Keep scrolling &mdash; watch them fall into place.</p>
+        <div class="chat-foot">
+          <span class="dot" aria-hidden="true"></span>
+          Handled automatically — no staff involved
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============ CAPABILITY STRIP ============ -->
+<!-- ================= STRIP ================= -->
 <section class="strip">
-  <div class="container strip-inner">
+  <div class="wrap strip-inner">
     <p class="strip-label">Systems we ship</p>
     <ul class="strip-list">
       <li>Enquiry handling</li>
@@ -110,108 +133,90 @@
   </div>
 </section>
 
-<!-- ============ SERVICES ============ -->
-<section class="section wall wall-right" id="services">
-  <div class="container">
-    <header class="section-head reveal">
+<!-- ================= SERVICES ================= -->
+<section class="section" id="services">
+  <div class="wrap">
+    <header class="head reveal">
       <p class="eyebrow">What we build</p>
       <h2>Four systems that remove the most hours</h2>
-      <p class="section-sub">
+      <p class="sub">
         Most businesses lose the same hours to the same tasks. These are the
-        four we're asked for most — each one built to your process, connected
-        to the tools you already use.
+        four we're asked for most — each built to your process and connected to
+        the tools you already pay for.
       </p>
     </header>
 
-    <div class="cards">
+    <div class="grid-4">
       <article class="card reveal">
-        <div class="card-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-            <path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.3 8.6 8.6 0 0 1-4-1L3 20l1.3-5.3a8.2 8.2 0 0 1-1.1-4.1A8.4 8.4 0 0 1 11.7 3h.6a8.4 8.4 0 0 1 8.7 8.5Z"/>
-          </svg>
-        </div>
+        <span class="card-num">01</span>
         <h3>Conversational agents</h3>
         <p>
-          An assistant that handles the messages your front desk repeats all
-          day — opening hours, pricing, availability — then books, reschedules
-          or cancels straight into your calendar. It knows when to stop and
-          hand a real person the conversation.
+          An assistant that handles what your front desk repeats all day —
+          opening hours, pricing, availability — then books, reschedules or
+          cancels straight into your calendar.
         </p>
-        <ul class="card-list">
+        <ul class="ticks">
           <li>WhatsApp, web chat, SMS or email</li>
-          <li>Reads from your own price list and policies</li>
-          <li>Escalates anything sensitive to a human</li>
+          <li>Answers from your own prices and policies</li>
+          <li>Hands anything sensitive to a human</li>
         </ul>
       </article>
 
-      <article class="card reveal" style="--d:.08s">
-        <div class="card-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-            <circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>
-          </svg>
-        </div>
+      <article class="card reveal" style="--d:.06s">
+        <span class="card-num">02</span>
         <h3>Lead research pipelines</h3>
         <p>
-          Systems that find businesses matching your ideal customer, enrich
-          them with real contact details, score them by how likely they are to
-          buy, and hand your sales team a ranked list instead of a spreadsheet
-          of noise.
+          Systems that find businesses matching your ideal customer, enrich them
+          with real contact details, and hand your sales team a ranked list
+          instead of a spreadsheet of noise.
         </p>
-        <ul class="card-list">
+        <ul class="ticks">
           <li>Sourced and de-duplicated automatically</li>
           <li>Contact details verified, not guessed</li>
           <li>Scored so you work the best leads first</li>
         </ul>
       </article>
 
-      <article class="card reveal" style="--d:.16s">
-        <div class="card-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-            <path d="M4 7h7M4 12h16M13 17h7"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/>
-          </svg>
-        </div>
+      <article class="card reveal" style="--d:.12s">
+        <span class="card-num">03</span>
         <h3>Workflow automation</h3>
         <p>
-          The quiet plumbing: moving data between your calendar, sheets, CRM
-          and inbox so nobody re-types anything. Built to fail loudly when
-          something breaks, rather than silently dropping a booking.
+          The quiet plumbing: moving data between your calendar, sheets, CRM and
+          inbox so nobody re-types anything. Built to fail loudly rather than
+          silently drop a booking.
         </p>
-        <ul class="card-list">
-          <li>Connects the tools you already pay for</li>
+        <ul class="ticks">
+          <li>Connects the tools you already use</li>
           <li>Handles the edge cases, not just the happy path</li>
-          <li>Alerts you when something needs a human</li>
+          <li>Alerts you when something needs a person</li>
         </ul>
       </article>
 
-      <article class="card reveal" style="--d:.24s">
-        <div class="card-ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-            <path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 15v-4M13 15V8M18 15v-6"/>
-          </svg>
-        </div>
+      <article class="card reveal" style="--d:.18s">
+        <span class="card-num">04</span>
         <h3>Internal dashboards</h3>
         <p>
           One screen that tells you what's actually happening — pipeline,
-          bookings, response times — built on your live data instead of a
-          monthly export somebody assembles by hand.
+          bookings, response times — built on live data instead of a monthly
+          export somebody assembles by hand.
         </p>
-        <ul class="card-list">
+        <ul class="ticks">
           <li>Live data, not last month's snapshot</li>
-          <li>Filters and exports your team will actually use</li>
-          <li>Shareable with the people who need it</li>
+          <li>Filters and exports your team will use</li>
+          <li>Shareable with whoever needs it</li>
         </ul>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ============ PROCESS ============ -->
-<section class="section wall wall-left" id="process">
-  <div class="container">
-    <header class="section-head reveal">
+<!-- ================= PROCESS ================= -->
+<section class="section section-alt" id="process">
+  <div class="wrap">
+    <header class="head reveal">
       <p class="eyebrow">How it works</p>
       <h2>From first call to live system</h2>
-      <p class="section-sub">
+      <p class="sub">
         No six-month discovery phase. We find the task costing you the most
         hours, build that first, and put it in front of real users quickly.
       </p>
@@ -219,66 +224,43 @@
 
     <ol class="steps">
       <li class="step reveal">
-        <span class="step-n">01</span>
+        <span class="step-n">1</span>
         <h3>Map the bottleneck</h3>
-        <p>
-          A call to find where the hours actually go. Often it isn't the task
-          you'd guess — it's the twenty small interruptions around it.
-        </p>
+        <p>A call to find where the hours actually go. It's usually not the task you'd guess — it's the small interruptions around it.</p>
       </li>
-      <li class="step reveal" style="--d:.08s">
-        <span class="step-n">02</span>
+      <li class="step reveal" style="--d:.06s">
+        <span class="step-n">2</span>
         <h3>Build the first system</h3>
-        <p>
-          We build the highest-cost workflow first, wired to your real tools
-          and your real data, so you can judge it on your own cases.
-        </p>
+        <p>We build the highest-cost workflow first, wired to your real tools and data, so you can judge it on your own cases.</p>
       </li>
-      <li class="step reveal" style="--d:.16s">
-        <span class="step-n">03</span>
+      <li class="step reveal" style="--d:.12s">
+        <span class="step-n">3</span>
         <h3>Test against reality</h3>
-        <p>
-          It runs alongside your team before it runs instead of them. We watch
-          where it gets things wrong and tighten it until it holds up.
-        </p>
+        <p>It runs alongside your team before it runs instead of them. We watch where it gets things wrong and tighten it.</p>
       </li>
-      <li class="step reveal" style="--d:.24s">
-        <span class="step-n">04</span>
+      <li class="step reveal" style="--d:.18s">
+        <span class="step-n">4</span>
         <h3>Hand over &amp; extend</h3>
-        <p>
-          You get the system, the documentation and the keys. Then we look at
-          the next bottleneck — or you take it from there.
-        </p>
+        <p>You get the system, the documentation and the keys. Then we look at the next bottleneck — or you take it from there.</p>
       </li>
     </ol>
   </div>
 </section>
 
-<!-- ============ STAGE BAND 2 ============ -->
-<section class="stage" aria-label="One running system">
-  <div class="container">
-    <div class="stage-cap">
-      <p class="eyebrow">The result</p>
-      <h2>One system,<br>running without you</h2>
-      <p class="stage-sub">Same work. Nobody touching it.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ WHY ============ -->
-<section class="section wall wall-right" id="why">
-  <div class="container why-grid">
+<!-- ================= WHY ================= -->
+<section class="section" id="why">
+  <div class="wrap why-grid">
     <div class="why-copy reveal">
       <p class="eyebrow">Why us</p>
       <h2>We build the unglamorous 20%</h2>
-      <p class="section-sub">
-        A demo that works once is easy. What takes the time is everything
-        after: the number that turns out to be wrong, the duplicate record,
-        the customer who phrases it in a way nobody predicted.
+      <p class="sub">
+        A demo that works once is easy. What takes the time is everything after:
+        the number that turns out wrong, the duplicate record, the customer who
+        phrases it in a way nobody predicted.
       </p>
-      <p class="section-sub">
-        That's the part we care about, because it's the part that decides
-        whether a system is trusted or quietly abandoned three weeks in.
+      <p class="sub">
+        That's the part that decides whether a system gets trusted or quietly
+        abandoned three weeks in.
       </p>
       <a class="btn btn-primary" href="#contact">Start a project</a>
     </div>
@@ -286,145 +268,105 @@
     <ul class="why-list">
       <li class="why-item reveal">
         <h3>Verified, not assumed</h3>
-        <p>
-          When a system depends on data being right, we check it rather than
-          hope. Wrong data quietly wastes more of your time than no data.
-        </p>
+        <p>When a system depends on data being right, we check it rather than hope. Wrong data wastes more of your time than none.</p>
       </li>
-      <li class="why-item reveal" style="--d:.08s">
+      <li class="why-item reveal" style="--d:.06s">
         <h3>Built to be handed over</h3>
-        <p>
-          Documented and yours. If you want to take it in-house or hire
-          someone else to extend it, nothing about our build stops you.
-        </p>
+        <p>Documented and yours. Nothing about how we build stops you taking it in-house or hiring someone else to extend it.</p>
       </li>
-      <li class="why-item reveal" style="--d:.16s">
+      <li class="why-item reveal" style="--d:.12s">
         <h3>Honest about limits</h3>
-        <p>
-          Some things shouldn't be automated. We'll tell you when a task needs
-          a person instead of selling you a system that half-works.
-        </p>
+        <p>Some things shouldn't be automated. We'll say so rather than sell you a system that half-works.</p>
       </li>
-      <li class="why-item reveal" style="--d:.24s">
+      <li class="why-item reveal" style="--d:.18s">
         <h3>Fixed scope, clear price</h3>
-        <p>
-          You know what's being built and what it costs before we start. No
-          open-ended hourly drift.
-        </p>
+        <p>You know what's being built and what it costs before we start. No open-ended hourly drift.</p>
       </li>
     </ul>
   </div>
 </section>
 
 <!--
-  ============================================================
-  TESTIMONIALS — deliberately left empty.
-  Your previous site had invented client quotes labelled
-  "straight from our Google Business profile". Those are a
-  real liability: a prospect who checks finds nothing, and
-  fabricated testimonials breach ASA (UK) and FTC (US) rules.
-  Add real ones here as you collect them, with permission.
-  ============================================================
+  TESTIMONIALS deliberately left out. The previous site had invented
+  client quotes labelled "straight from our Google Business profile" —
+  a prospect who checks finds nothing, and fabricated testimonials
+  breach ASA (UK) and FTC (US) rules. Add real ones here, with permission.
 -->
 
-<!-- ============ FAQ ============ -->
-<section class="section wall wall-left" id="faq">
-  <div class="container faq-wrap">
-    <header class="section-head reveal">
+<!-- ================= FAQ ================= -->
+<section class="section section-alt" id="faq">
+  <div class="wrap faq-wrap">
+    <header class="head reveal">
       <p class="eyebrow">FAQ</p>
       <h2>Questions worth asking</h2>
     </header>
 
     <div class="faq">
       <details class="reveal">
-        <summary>How long until something is actually live?</summary>
-        <p>
-          For a single well-defined workflow, usually two to four weeks from
-          the first call. Bigger systems get broken into pieces so something
-          useful is running early rather than everything landing at the end.
-        </p>
+        <summary>How long until something is live?</summary>
+        <div><p>For a single well-defined workflow, usually two to four weeks from the first call. Bigger systems get broken into pieces so something useful runs early rather than everything landing at the end.</p></div>
       </details>
-      <details class="reveal" style="--d:.06s">
+      <details class="reveal" style="--d:.04s">
         <summary>What does it cost?</summary>
-        <p>
-          It depends on how many systems and how tangled the existing setup
-          is. We quote a fixed price per system after the first call, so you
-          are never signing up to an open-ended hourly bill.
-        </p>
+        <div><p>It depends on how many systems and how tangled the current setup is. We quote a fixed price per system after the first call, so you're never signing up to an open-ended hourly bill.</p></div>
+      </details>
+      <details class="reveal" style="--d:.08s">
+        <summary>Do we have to change the tools we already use?</summary>
+        <div><p>Usually not. Most of what we build connects to what you have — your calendar, sheets, CRM, inbox. Replacing working tools is expensive and rarely the actual problem.</p></div>
       </details>
       <details class="reveal" style="--d:.12s">
-        <summary>Do we need to change the tools we already use?</summary>
-        <p>
-          Usually not. Most of what we build connects to what you already have
-          — your calendar, your sheets, your CRM, your inbox. Replacing working
-          tools is expensive and rarely the actual problem.
-        </p>
-      </details>
-      <details class="reveal" style="--d:.18s">
         <summary>What happens when the AI gets something wrong?</summary>
-        <p>
-          It gets designed for. Systems we build hand over to a human on
-          anything sensitive or unclear rather than guessing, and log what they
-          did so you can see it. An agent that admits uncertainty is worth more
-          than one that's confidently wrong.
-        </p>
+        <div><p>It gets designed for. Our systems hand over to a human on anything sensitive or unclear rather than guessing, and log what they did so you can see it. An agent that admits uncertainty is worth more than one that's confidently wrong.</p></div>
       </details>
-      <details class="reveal" style="--d:.24s">
+      <details class="reveal" style="--d:.16s">
         <summary>Who owns the system once it's built?</summary>
-        <p>
-          You do — the workflows, the code and the accounts. We hand over
-          documentation with it. You're not renting access to something you
-          can't touch.
-        </p>
+        <div><p>You do — the workflows, the code and the accounts, with documentation. You're not renting access to something you can't touch.</p></div>
       </details>
-      <details class="reveal" style="--d:.3s">
+      <details class="reveal" style="--d:.2s">
         <summary>Is our data safe?</summary>
-        <p>
-          Your data stays in your own accounts wherever possible, and we use
-          the minimum access a system needs to work. We'll walk through exactly
-          what connects to what before anything goes live.
-        </p>
+        <div><p>Your data stays in your own accounts wherever possible, and we use the minimum access a system needs to work. We'll walk through exactly what connects to what before anything goes live.</p></div>
       </details>
     </div>
   </div>
 </section>
 
-<!-- ============ CONTACT / CTA ============ -->
-<section class="section cta-section wall wall-right" id="contact">
-  <div class="container">
+<!-- ================= CTA ================= -->
+<section class="section cta-section" id="contact">
+  <div class="wrap">
     <div class="cta reveal">
-      <div class="cta-glow" aria-hidden="true"></div>
       <p class="eyebrow">Get started</p>
       <h2>What's the task you'd stop doing tomorrow?</h2>
-      <p class="section-sub">
+      <p class="sub">
         Tell us the job that eats your week. If we can automate it, we'll tell
         you how and what it costs. If we can't, we'll tell you that too.
       </p>
       <div class="cta-actions">
-        <!-- PLACEHOLDER: replace __YOUR_WHATSAPP__ with your number, digits only -->
-        <a class="btn btn-primary btn-lg"
-           data-placeholder="whatsapp"
+        <!-- PLACEHOLDER: replace __YOUR_WHATSAPP__ with digits only -->
+        <a class="btn btn-primary btn-lg" data-placeholder="whatsapp"
            href="https://wa.me/__YOUR_WHATSAPP__?text=Hi%20%E2%80%94%20I%27d%20like%20to%20talk%20about%20automating%20something%20in%20my%20business.">
           Message us on WhatsApp
         </a>
         <!-- PLACEHOLDER: replace __YOUR_EMAIL__ -->
-        <a class="btn btn-ghost btn-lg"
-           data-placeholder="email"
+        <a class="btn btn-ghost btn-lg" data-placeholder="email"
            href="mailto:__YOUR_EMAIL__?subject=Automation%20enquiry">
           Email instead
         </a>
       </div>
-      <p class="cta-note">Usually replies same day.</p>
+      <p class="cta-note">Usually replies the same day.</p>
     </div>
   </div>
 </section>
 
-<!-- ============ FOOTER ============ -->
+</main>
+
+<!-- ================= FOOTER ================= -->
 <footer class="footer">
-  <div class="container footer-inner">
+  <div class="wrap footer-inner">
     <div class="footer-brand">
-      <span class="logo-mark" aria-hidden="true"></span>
-      <span class="logo-text">NEXUS <span>AI</span></span>
+      <a class="logo" href="#top">
+        <span class="logo-mark" aria-hidden="true"></span>
+        <span class="logo-text">NEXUS<span>AI</span></span>
+      </a>
       <p>AI agents and automation, built to your process.</p>
     </div>
     <nav class="footer-links" aria-label="Footer">
@@ -435,12 +377,11 @@
       <a href="#contact">Contact</a>
     </nav>
   </div>
-  <div class="container footer-bottom">
+  <div class="wrap footer-bottom">
     <p>&copy; <span id="year">2026</span> NEXUS AI. All rights reserved.</p>
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="js/scene.js"></script>
+<script src="js/main.js"></script>
 </body>
 </html>
